@@ -2,7 +2,8 @@ package gt.com.antiguaburger.antiguaburgerweb.print;
 
 
 import gt.com.antiguaburger.antiguaburgerweb.modelo.OrderEntity;
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
 /**
  * 
  */
@@ -34,30 +35,26 @@ public class PrintHTML implements IPrinter {
                     "<h1 align=\"center\" >Antigua Burger order </h1>\n" +
                     "<hr>\n <table style=\"width:20%\">");
             pw.println("<tr><td>=================== </td> <td>============================ </td></tr>");
-            pw.println(" <tr> \n <td> <strong> order </strong> </td> <td> "+header.getOrder()+" </td> \n </tr>");
-            pw.println(" <tr> \n <td> <strong> cashier </strong> </td> <td> "+header.getCashier()+" </td> \n </tr>");
-            pw.println(" <tr> \n <td> <strong> username </strong> </td> <td> "+header.getUsername()+" </td> \n </tr>");
-            pw.println(" <tr> \n <td> <strong> date </strong> </td> <td> "+header.getDate()+" </td> \n </tr>");
-            pw.println(" <tr> \n <td> <strong> customer </strong> </td> <td> "+header.getCustomer()+" </td> \n </tr>");
-            pw.println(" <tr> \n <td> <strong> taxId </strong> </td> <td> "+header.getTaxid()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> order </strong> </td> <td> "+order.getOrder()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> cashier </strong> </td> <td> "+order.getCashier()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> username </strong> </td> <td> "+order.getUsername()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> date </strong> </td> <td> "+order.getDate()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> customer </strong> </td> <td> "+order.getCustomer()+" </td> \n </tr>");
+            pw.println(" <tr> \n <td> <strong> taxId </strong> </td> <td> "+order.getTaxid()+" </td> \n </tr>");
             pw.println("<tr><td>=================== </td> <td>============================ </td></tr>");
             pw.println(" <tr> \n <td> <strong> menu </strong> </td> <td> "+order.getType()+" </td> \n </tr>");
             // pw.println("<tr>\n   <td> <strong> item </strong> </strong> </td> \n <td>  <strong> option  </strong> </td> \n </tr>");
-            for(String value : order.getFood().getItem()){
-                pw.println("<tr> <td>---</td> \n <td> "+value);
-                pw.println(" "+order.getFood().getOption().get(i-1)+"<td> </tr>");
+            for(String value : order.getItems()){
+                pw.println("<tr> <td>---</td> \n <td> "+value+ "</td> </tr>");
                 i++;
             }
             i=1;
-            for(String value : ex.getExtras()){
+            for(String value : order.getData()){
                 pw.println("<tr> <td> <strong> extra "+i+" </strong></td> <td>"+value+"</td>");
                 i++;
             }
-            for (int a = 0; a < ex.getPriceE().size(); a++) {
-                sum += ex.getPriceE().get(a);
-            }
             pw.println("<tr><td>==================== </td> <td>============================ </td></tr>");
-            pw.println("<tr> <td> <strong> Total </strong> </td> <td>"+(order.getTotal()+sum)+"</td> </tr>");
+            pw.println("<tr> <td> <strong> Total </strong> </td> <td>"+(order.getTotal())+"</td> </tr>");
             pw.println("<tr><td>==================== </td> <td>============================ </td></tr>");
             pw.println("</body> \n </html> ");
 
