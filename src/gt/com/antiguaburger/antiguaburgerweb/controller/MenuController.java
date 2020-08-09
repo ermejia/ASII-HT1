@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MenuController {
 
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        return "login";
+    }
+
     @GetMapping("/greeting")
     public String greetingForm(Model model) {
         model.addAttribute("menu", new OrderWebEntity());
