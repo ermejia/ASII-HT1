@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Burger Order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        h1 {
+            font-family: "Ubuntu", sans-serif;
+        }
+        
+        h1 {
+            font-size: 50px
+        }
+        
+        h1 {
+            color: aliceblue
+        }
+        
+        h4 {
+            font-family: "Ubuntu", sans-serif;
+        }
+        
+        h4 {
+            font-size: 20px
+        }
+        
+        h4 {
+            color: aliceblue
+        }
+    </style>
+    <form class="form-group">
+        <div style="background:black" class="jumbotron">
+            <h1 align="center">Orden Menú</h1>
+            <hr class="my-4">
+            <div class="container">
+                <input th:class="form-control" th:each="men : ${menu}" th:value="${men}">
+            </div>
+            <br>
+            <br>
+            <h1 align="center">Extras</h1>
+            <hr class="my-4">
+            <div class="container">
+                <input th:class="form-control" th:each="extr : ${extras}" th:value="${extr}">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="container">
+                <h4>Total</h4>
+                <input th:class="form-control" th:value="${total}">
+            </div>
+            <br>
+            <input href="/greeting" type="submit" class="btn btn-danger" value="Nueva Orden" />
+            <input type="submit" class="btn btn-dark" value="Exportar a CSV" />
+            <input type="submit" class="btn btn-dark" value="Exportar a HTML" />
+            <input type="submit" class="btn btn-dark" value="Exportar a JSON" />
+            <input type="submit" class="btn btn-dark" value="Exportar a TXT" />
+            <input type="submit" class="btn btn-dark" value="Exportar a XML" />
+        </div>
+    </form>
+</body>
+
+</html>

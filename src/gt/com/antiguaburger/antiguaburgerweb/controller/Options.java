@@ -1,5 +1,7 @@
 package gt.com.antiguaburger.antiguaburgerweb.controller;
 
+import gt.com.antiguaburger.antiguaburgerweb.modelo.OrderEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,11 @@ public class Options {
             case "27": return "Pastel";
             case "28": return "Flan";
             case "29": return "Gelatina";
+            case "30": return "Hamburguesa";
+            case "31": return "Cereal";
+            case "32": return "Fruta";
+            case "33": return "Avena";
+            case "34": return "Tortillas";
         }
 return null;
     }

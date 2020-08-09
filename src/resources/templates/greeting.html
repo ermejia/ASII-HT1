@@ -1,0 +1,965 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="">
+
+<head>
+    <title>Antigua Burger Web</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        h1 {
+            font-family: "Ubuntu", sans-serif;
+        }
+        
+        h1 {
+            font-size: 50px
+        }
+    </style>
+    <div style="background:yellowgreen !important" class="jumbotron">
+        <div class="container">
+            <h1 align="center"> Menu Desayuno No. 1</h1>
+            <hr class="my-4">
+            <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                <label><b>Id Menu</b></label>
+                <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                <label><b>Huevos:</b></label>
+                <select class="form-control" th:field="*{idoption[0]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="1"> Estrellados </option>
+            <option value="2"> Revueltos </option>
+            <option value="3"> Ommelete </option>
+        </select>
+
+                <label><b>Frijoles:</b></label>
+                <select class="form-control" th:field="*{idoption[1]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="4"> Parados </option>
+            <option value="5"> Volteados </option>
+        </select>
+
+
+                <label><b>Plátanos:</b></label>
+                <select class="form-control" th:field="*{idoption[2]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="6"> Fritos </option>
+            <option value="7"> Cocidos </option>
+        </select>
+
+                <label><b>Pan:</b></label>
+                <select class="form-control" th:field="*{idoption[3]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="8"> Blanco </option>
+            <option value="9"> Integral </option>
+        </select>
+
+                <label><b>Bebidas:</b></label>
+                <select class="form-control" th:field="*{idoption[4]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="10"> Café </option>
+            <option value="11"> Té </option>
+            <option value="12"> Jugo </option>
+        </select>
+
+                <p></p>
+                <label>
+       <b>Extra Huevos:</b>
+        <select class="form-control" th:field="*{idExtra[0]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+            <option value="1"> Estrellados </option>
+            <option value="2"> Revueltos </option>
+            <option value="3"> Omelette </option>
+        </select>
+    </label>
+
+
+                <label>
+        <b>Cantidad Extra:</b>
+        <select class="form-control" th:field="*{cantextra[0]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+            <option value= 1>1</option>
+        </select>
+    </label>
+
+                <p></p>
+
+                <label>
+        <b>Extra Frijoles:</b>
+        <select class="form-control" th:field="*{idExtra[1]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+            <option value="4"> Parados </option>
+            <option value="5"> Volteados </option>
+        </select>
+    </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+        <select class="form-control" th:field="*{cantextra[1]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+            <option value= 1>1</option>
+        </select>
+    </label>
+
+                <p></p>
+                <label>
+        <b>Extra Plátanos:</b>
+        <select class="form-control" th:field="*{idExtra[2]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+            <option value="6"> Fritos </option>
+            <option value="7"> Cocidos </option>
+        </select>
+    </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+        <select class="form-control" th:field="*{cantextra[2]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+            <option value= 1>1</option>
+        </select>
+    </label>
+
+                <p></p>
+                <label>
+        <b>Extra Pan:</b>
+        <select class="form-control" th:field="*{idExtra[3]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+            <option value="8"> Pan Blanco </option>
+            <option value="9"> Pan Integral </option>
+        </select>
+    </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+        <select class="form-control" th:field="*{cantextra[3]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+            <option value= 1>1</option>
+        </select>
+    </label>
+
+                <p></p>
+                <label>
+        <b>Extra Otros:</b>
+        <select class="form-control" th:field="*{idExtra[4]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+            <option value="10"> Crema </option>
+            <option value="11"> Queso </option>
+            <option value="12"> Tortillas </option>
+            <option value="13"> Fruta </option>
+            <option value="14"> Jugo de Naranja </option>
+        </select>
+    </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+        <select class="form-control" th:field="*{cantextra[4]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+            <option value= 1>1</option>
+        </select>
+    </label>
+
+                <p></p>
+                <p>
+                    <input type="submit" class="btn btn-success" value="Enviar Orden" />
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <div style="background:orange !important" class="jumbotron">
+        <div class="container">
+            <h1 align="center"> Menu Desayuno No. 2</h1>
+            <hr class="my-4">
+            <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                <label><b>Id Menu</b></label>
+                <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                <label><b>Cereal:</b></label>
+                <select class="form-control" th:field="*{idoption[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="31">Cereal</option>
+            </select>
+
+                <label><b>Fruta:</b></label>
+                <select class="form-control" th:field="*{idoption[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="32">Fruta</option>
+            </select>
+
+                <label><b>Bebidas:</b></label>
+                <select class="form-control" th:field="*{idoption[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="10"> Café </option>
+                <option value="11"> Té </option>
+                <option value="12"> Jugo </option>
+            </select>
+
+                <p></p>
+                <label>
+                <b>Extra Huevos:</b>
+                <select class="form-control" th:field="*{idExtra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="1"> Estrellados </option>
+                    <option value="2"> Revueltos </option>
+                    <option value="3"> Omelette </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Frijoles:</b>
+                <select class="form-control" th:field="*{idExtra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="4"> Parados </option>
+                    <option value="5"> Volteados </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Plátanos:</b>
+                <select class="form-control" th:field="*{idExtra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="6"> Fritos </option>
+                    <option value="7"> Cocidos </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Pan:</b>
+                <select class="form-control" th:field="*{idExtra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="8"> Pan Blanco </option>
+                    <option value="9"> Pan Integral </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Otros:</b>
+                <select class="form-control" th:field="*{idExtra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="10"> Crema </option>
+                    <option value="11"> Queso </option>
+                    <option value="12"> Tortillas </option>
+                    <option value="13"> Fruta </option>
+                    <option value="14"> Jugo de Naranja </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <p>
+                    <input type="submit" class="btn btn-success" value="Enviar Orden" />
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div style="background:yellow !important" class="jumbotron">
+        <div class="container">
+            <h1 align="center"> Menu Desayuno No. 3</h1>
+            <hr class="my-4">
+            <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                <label><b>Id Menu</b></label>
+                <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                <label><b>Avena:</b></label>
+                <select class="form-control" th:field="*{idoption[0]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="33">Avena</option>
+        </select>
+
+                <label><b>Fruta:</b></label>
+                <select class="form-control" th:field="*{idoption[1]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="32">Fruta</option>
+        </select>
+
+                <label><b>Bebida:</b></label>
+                <select class="form-control" th:field="*{idoption[2]}">
+            <option th:each="option : ${menu}"
+                    th:value="${menu.idoption}">-Seleccione su Opción-</option>
+            <option value="10"> Café </option>
+            <option value="11"> Té </option>
+            <option value="12"> Jugo </option>
+        </select>
+
+                <p></p>
+                <label>
+            <b>Extra Huevos:</b>
+            <select class="form-control" th:field="*{idExtra[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                <option value="1"> Estrellados </option>
+                <option value="2"> Revueltos </option>
+                <option value="3"> Omelette </option>
+            </select>
+        </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+            <select class="form-control" th:field="*{cantextra[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                <option value= 1>1</option>
+            </select>
+        </label>
+
+                <p></p>
+
+                <label>
+            <b>Extra Frijoles:</b>
+            <select class="form-control" th:field="*{idExtra[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                <option value="4"> Parados </option>
+                <option value="5"> Volteados </option>
+            </select>
+        </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+            <select class="form-control" th:field="*{cantextra[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                <option value= 1>1</option>
+            </select>
+        </label>
+
+                <p></p>
+                <label>
+        <b>Extra Plátanos</b>
+            <select class="form-control" th:field="*{idExtra[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                <option value="6"> Fritos </option>
+                <option value="7"> Cocidos </option>
+            </select>
+        </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+            <select class="form-control" th:field="*{cantextra[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                <option value= 1>1</option>
+            </select>
+        </label>
+
+                <p></p>
+                <label>
+            <b>Extra Pan:</b>
+            <select class="form-control" th:field="*{idExtra[3]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                <option value="8"> Pan Blanco </option>
+                <option value="9"> Pan Integral </option>
+            </select>
+        </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+            <select class="form-control" th:field="*{cantextra[3]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                <option value= 1>1</option>
+            </select>
+        </label>
+
+                <p></p>
+                <label>
+            <b>Extra Otros:</b>
+            <select class="form-control" th:field="*{idExtra[4]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                <option value="10"> Crema </option>
+                <option value="11"> Queso </option>
+                <option value="12"> Tortillas </option>
+                <option value="13"> Fruta </option>
+                <option value="14"> Jugo de Naranja </option>
+            </select>
+        </label>
+
+                <label>
+        <b>Cantidad Extra:</b>
+            <select class="form-control" th:field="*{cantextra[4]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                <option value= 1>1</option>
+            </select>
+        </label>
+
+                <p></p>
+                <p>
+                    <input type="submit" class="btn btn-success" value="Enviar Orden" />
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div style="background:lightblue !important" class="jumbotron">
+        <div class="container">
+            <h1 align="center"> Menu Almuerzo No. 1</h1>
+            <hr class="my-4">
+            <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                <label><b>Id Menu</b></label>
+                <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                <label><b>Hamburguesa:</b></label>
+                <select class="form-control" th:field="*{idoption[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="30">Hamburguesa</option>
+            </select>
+
+                <label><b>Papas:</b></label>
+                <select class="form-control" th:field="*{idoption[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="13">Fritas</option>
+                <option value="14">Al Vapor</option>
+                <option value="15">Horneadas</option>
+            </select>
+
+                <label><b>Bebida:</b></label>
+                <select class="form-control" th:field="*{idoption[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="21"> Gaseosa </option>
+                <option value="22"> Té Frío</option>
+                <option value="23"> Agua Pura </option>
+            </select>
+
+                <p></p>
+                <label>
+                <b>Extra Torta de Carne:</b>
+                <select class="form-control" th:field="*{idExtra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="15"> Torta Simple </option>
+                    <option value="16"> Torta Doble </option>
+                    <option value="17"> Torta Triple </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Queso Amarillo:</b>
+                <select class="form-control" th:field="*{idExtra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="18"> Queso Simple </option>
+                    <option value="19"> Queso Doble </option>
+                    <option value="20"> Queso Triple </option>
+                </select>
+            </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Helado:</b>
+                <select class="form-control" th:field="*{idExtra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="21"> Helado </option>
+                </select>
+            </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Pastel:</b>
+                <select class="form-control" th:field="*{idExtra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="22"> Pastel</option>
+                </select>
+            </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Flan:</b>
+                <select class="form-control" th:field="*{idExtra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="23"> Flan </option>
+                </select>
+            </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Gelatina</b>
+                <select class="form-control" th:field="*{idExtra[5]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="24"> Gelatina </option>
+                </select>
+            </label>
+
+                <label>
+            <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[5]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <p>
+                    <input type="submit" class="btn btn-success" value="Enviar Orden" />
+            </form>
+        </div>
+    </div>
+
+
+    <div style="background:mediumturquoise !important" class="jumbotron">
+        <div class="container">
+            <h1 align="center"> Menu Almuerzo No. 2</h1>
+            <hr class="my-4">
+            <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                <label><b>Id Menu</b></label>
+                <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                <label><b>Ensalada:</b></label>
+                <select class="form-control" th:field="*{idoption[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="16">Verde</option>
+                <option value="17">César</option>
+                <option value="18">Asiática</option>
+            </select>
+
+                <label><b>Pollo:</b></label>
+                <select class="form-control" th:field="*{idoption[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="19">Frito</option>
+                <option value="20">A la Parrilla</option>
+            </select>
+
+                <label><b>Sopa:</b></label>
+                <select class="form-control" th:field="*{idoption[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="24"> Tomate </option>
+                <option value="25"> Frijol </option>
+            </select>
+
+                <label><b>Bebida:</b></label>
+                <select class="form-control" th:field="*{idoption[3]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="21"> Gaseosa </option>
+                <option value="22"> Té Frío</option>
+                <option value="23"> Agua Pura </option>
+            </select>
+
+                <p></p>
+                <label>
+                <b>Extra Torta de Carne:</b>
+                <select class="form-control" th:field="*{idExtra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="15"> Torta Simple </option>
+                    <option value="16"> Torta Doble </option>
+                    <option value="17"> Torta Triple </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Queso Amarillo:</b>
+                <select class="form-control" th:field="*{idExtra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="18"> Queso Simple </option>
+                    <option value="19"> Queso Doble </option>
+                    <option value="20"> Queso Triple </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Helado:</b>
+                <select class="form-control" th:field="*{idExtra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="21"> Helado </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Pastel:</b>
+                <select class="form-control" th:field="*{idExtra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="22"> Pastel</option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Extra Flan:</b>
+                <select class="form-control" th:field="*{idExtra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="23"> Flan </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <label>
+                <b>Gelatina</b>
+                <select class="form-control" th:field="*{idExtra[5]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="24"> Gelatina </option>
+                </select>
+            </label>
+
+                <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[5]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                <p></p>
+                <p>
+                    <input type="submit" class="btn btn-success" value="Enviar Orden" />
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <body>
+        <div style="background:palevioletred !important" class="jumbotron">
+            <div class="container">
+                <h1 align="center"> Menu Cena No. 1</h1>
+                <hr class="my-4">
+                <form class="form-group" action="#" th:action="@{/greeting}" th:object="${menu}" method="post">
+
+                    <label><b>Id Menu</b></label>
+                    <input class="form-control" type="text" th:field="*{idmenu}" value="1" required>
+
+                    <label><b>Huevos:</b></label>
+                    <select class="form-control" th:field="*{idoption[0]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="1"> Estrellados </option>
+                <option value="2"> Revueltos </option>
+                <option value="3"> Ommelete </option>
+            </select>
+
+                    <label><b>Frijoles:</b></label>
+                    <select class="form-control" th:field="*{idoption[1]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="4"> Parados </option>
+                <option value="5"> Volteados </option>
+            </select>
+
+                    <label><b>Tortillas:</b></label>
+                    <select class="form-control" th:field="*{idoption[2]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="34"> Tortillas de Harina </option>
+            </select>
+
+                    <label><b>Bebida:</b></label>
+                    <select class="form-control" th:field="*{idoption[3]}">
+                <option th:each="option : ${menu}"
+                        th:value="${menu.idoption}">-Seleccione su Opción-</option>
+                <option value="10"> Café </option>
+                <option value="11"> Té </option>
+                <option value="12"> Jugo </option>
+            </select> p>
+
+                    </p>
+                    <label>
+                <b>Extra Huevos:</b>
+                <select class="form-control" th:field="*{idExtra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="1"> Estrellados </option>
+                    <option value="2"> Revueltos </option>
+                    <option value="3"> Omelette </option>
+                </select>
+            </label>
+
+
+                    <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[0]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                    <p></p>
+
+                    <label>
+                <b>Extra Frijoles:</b>
+                <select class="form-control" th:field="*{idExtra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="4"> Parados </option>
+                    <option value="5"> Volteados </option>
+                </select>
+            </label>
+
+                    <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[1]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                    <p></p>
+                    <label>
+                <b>Extra Plátanos:</b>
+                <select class="form-control" th:field="*{idExtra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="6"> Fritos </option>
+                    <option value="7"> Cocidos </option>
+                </select>
+            </label>
+
+                    <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[2]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                    <p></p>
+                    <label>
+                <b>Extra Pan:</b>
+                <select class="form-control" th:field="*{idExtra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="8"> Pan Blanco </option>
+                    <option value="9"> Pan Integral </option>
+                </select>
+            </label>
+
+                    <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[3]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                    <p></p>
+                    <label>
+                <b>Extra Otros:</b>
+                <select class="form-control" th:field="*{idExtra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.idExtra}">-Seleccione su Opción-</option>
+                    <option value="10"> Crema </option>
+                    <option value="11"> Queso </option>
+                    <option value="12"> Tortillas </option>
+                    <option value="13"> Fruta </option>
+                    <option value="14"> Jugo de Naranja </option>
+                </select>
+            </label>
+
+                    <label>
+                <b>Cantidad Extra:</b>
+                <select class="form-control" th:field="*{cantextra[4]}">
+                    <option th:each="option : ${menu}"
+                            th:value="${menu.cantextra}">-Seleccione su Opción-</option>
+                    <option value= 1>1</option>
+                </select>
+            </label>
+
+                    <p></p>
+                    <p>
+                        <input type="submit" class="btn btn-success" value="Enviar Orden" />
+                    </p>
+                </form>
+            </div>
+        </div>
+    </body>
+</body>
+
+</html>
